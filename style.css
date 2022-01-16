@@ -1,0 +1,412 @@
+@charset "UTF-8";
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-weight: 500;
+  height: 100%;
+  background-color: #333;
+  font-family: serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  position: relative;
+  display: inline-block;
+  font-weight: 900;
+  color: #0a0909;
+  text-decoration: none;
+}
+a:hover {
+  color: #bea846;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+a::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #847533;
+  -webkit-transform: scale(0, 1);
+          transform: scale(0, 1);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+a:hover::after {
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+
+.nav {
+  z-index: 9999;
+  background-color: #e7e7e7;
+  padding: 13px;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #f1f1f1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 7px rgba(0, 0, 0, 0.2);
+  top: 0;
+}
+
+.nav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 15px;
+}
+.nav-list .li {
+  margin-right: 20px;
+}
+
+/* ローディング画面 */
+/* ローディングアニメーション */
+.illusts {
+  position: relative;
+  z-index: 0;
+  padding-top: 20px;
+  background-color: #3596cf;
+}
+
+.illusts::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 60%;
+  background-color: #e7e7e7;
+  -webkit-transform: skewY(-5deg);
+          transform: skewY(-5deg);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.illustration {
+  font-size: 50px;
+  width: 300px;
+  /* 上 | 左右 | 下 */
+  margin: 0 auto 10px;
+  border-left: 0.2em solid #333;
+  text-align: center;
+}
+
+.backgroundImg {
+  width: 100%;
+  height: 100vh;
+  opacity: 0.6;
+  background-image: url(img/furen.JPG);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.section {
+  width: 1060px;
+  margin: 40px auto 0;
+}
+
+.thumbnail {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  vertical-align: top;
+}
+.thumbnail li {
+  width: 450px;
+  height: 450px;
+  opacity: 0;
+  position: relative;
+  -webkit-transition: 1.2s;
+  transition: 1.2s;
+  overflow: hidden;
+  margin: 20px 40px;
+}
+.thumbnail li .contentsText {
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  /* マスクを表示しない */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* マスクは半透明 */
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.thumbnail li .h2 {
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+}
+.thumbnail li:hover .contentsText {
+  opacity: 1;
+}
+.thumbnail .show {
+  opacity: 1;
+}
+.thumbnail h2 {
+  font-size: 30px;
+}
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.background {
+  position: relative;
+}
+.background .title {
+  overflow: hidden;
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+  -webkit-transition: -webkit-transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  transition: -webkit-transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, -webkit-transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  color: #f38028;
+  font-size: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 750px) {
+  /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  /* 
+  hamburger(ハンバーガーアイコン)
+  =================================== */
+  .hamburger {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+
+  .hamburger__line {
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    right: 0;
+    background-color: #000;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+
+  .hamburger__line--1 {
+    top: 3px;
+  }
+
+  .hamburger__line--2 {
+    top: 14px;
+  }
+
+  .hamburger__line--3 {
+    top: 26px;
+  }
+
+  /*ハンバーガーがクリックされたら*/
+  .open .hamburger__line--1 {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    top: 11px;
+  }
+
+  .open .hamburger__line--2 {
+    opacity: 0;
+  }
+
+  .open .hamburger__line--3 {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    top: 11px;
+  }
+
+  /* 
+  sp-nav(ナビ)
+  =================================== */
+  .sp-nav {
+    position: fixed;
+    right: -100%;
+    /*ハンバーガーがクリックされる前はWindow右側に隠す*/
+    top: 0;
+    width: 70%;
+    /* 出てくるスライドメニューの幅 */
+    height: 100vh;
+    background-color: #fff;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    z-index: 200;
+    overflow-y: auto;
+    /* メニューが多くなったらスクロールできるように */
+  }
+
+  /*ハンバーガーがクリックされたら右からスライド*/
+  .open .sp-nav {
+    right: 0;
+  }
+
+  /* 
+  black-bg(ハンバーガーメニュー解除用bg)
+  =================================== */
+  .black-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background-color: #000;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  /*ハンバーガーメニューが開いたら表示*/
+  .open .black-bg {
+    opacity: 0.3;
+    visibility: visible;
+  }
+
+  .nav {
+    z-index: 9999;
+    background-color: #e7e7e7;
+    padding: 10px;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: #f1f1f1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 7px rgba(0, 0, 0, 0.2);
+    top: 0;
+  }
+
+  .nav-list {
+    padding: 0 10px;
+  }
+  .nav-list .li {
+    margin: 20px auto 0 auto;
+  }
+
+  .backgroundImg {
+    width: 100%;
+    height: 0;
+    padding-top: calc(764 / 1188 * 100%);
+    /* calc(画像高さ ÷ 画像横幅 × 100%) */
+    background-image: url(img/furen.JPG) no-repeat center;
+  }
+
+  .background .title {
+    font-size: 19px;
+  }
+
+  .section {
+    width: 316px;
+    margin: 10px auto 0;
+  }
+
+  .thumbnail {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    vertical-align: top;
+  }
+  .thumbnail li {
+    width: 138px;
+    height: 138px;
+    opacity: 0;
+    position: relative;
+    -webkit-transition: 1.5s;
+    transition: 1.5s;
+    overflow: hidden;
+    margin: 10px;
+  }
+  .thumbnail li .h2 {
+    font-size: 13px;
+  }
+  .thumbnail .show {
+    opacity: 1;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+  .illustration {
+    font-size: 25px;
+    width: 170px;
+    margin: 10px auto;
+    border-left: 0.2em solid #333;
+    text-align: center;
+  }
+}
